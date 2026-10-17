@@ -22,7 +22,7 @@ export default function ProductList({
 
   if (products.length === 0) {
     return (
-      <p className="w-full min-w-0 text-sm text-slate-500">
+      <p className="w-full min-w-0 text-sm text-slate-500 dark:text-slate-400">
         {emptyMessage}
       </p>
     )
@@ -34,7 +34,7 @@ export default function ProductList({
         <Link
           key={product.id}
           to={PATHS.product(product.id)}
-          className="block min-w-0 w-full max-w-full overflow-hidden rounded-2xl border border-slate-100 bg-white p-3 transition-colors hover:border-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900"
+          className="block min-w-0 w-full max-w-full overflow-hidden rounded-2xl border border-slate-100 bg-white p-3 transition-colors hover:border-slate-200 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:border-slate-800 dark:bg-slate-900 dark:hover:border-slate-700 dark:focus-visible:ring-slate-200"
         >
           <ProductCard
             image={product.image}

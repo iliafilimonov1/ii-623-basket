@@ -20,7 +20,7 @@ export default function HeroSlider({
   className = '',
 }) {
   return (
-    <section className={`relative overflow-hidden rounded-3xl bg-slate-200 ${className}`}>
+    <section className={`relative overflow-hidden rounded-3xl bg-slate-200 dark:bg-slate-800 ${className}`}>
       <Swiper
         modules={[Navigation, Pagination, A11y]}
         loop
@@ -77,7 +77,7 @@ export default function HeroSlider({
           <button
             type="button"
             aria-label="Предыдущий слайд"
-            className="hero-swiper-prev pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-white/90 hover:bg-white text-slate-700 hover:text-slate-900 shadow-sm hover:shadow-md transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900"
+            className="hero-swiper-prev pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-white/90 hover:bg-white text-slate-700 hover:text-slate-900 shadow-sm hover:shadow-md transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:bg-slate-900/80 dark:hover:bg-slate-900 dark:text-slate-100 dark:hover:text-white dark:focus-visible:ring-slate-200"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 19.5 8.25 12l7.5-7.5" />
@@ -89,7 +89,7 @@ export default function HeroSlider({
           <button
             type="button"
             aria-label="Следующий слайд"
-            className="hero-swiper-next pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-white/90 hover:bg-white text-slate-700 hover:text-slate-900 shadow-sm hover:shadow-md transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900"
+            className="hero-swiper-next pointer-events-auto flex h-10 w-10 items-center justify-center rounded-full bg-white/90 hover:bg-white text-slate-700 hover:text-slate-900 shadow-sm hover:shadow-md transition-all cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:bg-slate-900/80 dark:hover:bg-slate-900 dark:text-slate-100 dark:hover:text-white dark:focus-visible:ring-slate-200"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" />

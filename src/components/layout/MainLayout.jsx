@@ -6,7 +6,7 @@ import Header from './Header.jsx'
  */
 export default function MainLayout() {
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col overflow-x-clip">
+    <div className="min-h-screen bg-slate-50 text-slate-900 flex flex-col overflow-x-clip transition-colors duration-200 dark:bg-slate-950 dark:text-slate-50">
       <Header />
       <Outlet />
     </div>

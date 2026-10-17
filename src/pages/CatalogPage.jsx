@@ -18,22 +18,22 @@ export default function CatalogPage() {
 
   return (
     <main className="max-w-7xl mx-auto w-full min-w-0 overflow-x-clip px-4 sm:px-6 lg:px-8 py-8">
-      <nav aria-label="Хлебные крошки" className="mb-4 text-sm text-slate-400">
+      <nav aria-label="Хлебные крошки" className="mb-4 text-sm text-slate-400 dark:text-slate-500">
         <Link
           to={PATHS.home}
-          className="hover:text-slate-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 rounded-sm"
+          className="hover:text-slate-700 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 rounded-sm dark:hover:text-slate-200 dark:focus-visible:ring-slate-200"
         >
           Главная
         </Link>
         <span className="mx-2">/</span>
-        <span className="text-slate-500">Каталог</span>
+        <span className="text-slate-500 dark:text-slate-400">Каталог</span>
       </nav>
 
       <header className="max-w-2xl mb-8">
-        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+        <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight dark:text-slate-50">
           Каталог товаров
         </h1>
-        <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed">
+        <p className="mt-3 text-sm sm:text-base text-slate-500 leading-relaxed dark:text-slate-400">
           Откройте для себя нашу эксклюзивную коллекцию предметов интерьера. Каждое
           изделие отобрано вручную для создания гармонии и уюта в вашем современном
           доме.
@@ -51,10 +51,10 @@ export default function CatalogPage() {
                 role="tab"
                 aria-selected={isActive}
                 onClick={() => setActiveCategory(category.id)}
-                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 ${
+                className={`rounded-full px-4 py-2 text-sm font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-slate-200 ${
                   isActive
-                    ? 'bg-slate-900 text-white'
-                    : 'bg-transparent text-slate-500 hover:text-slate-900 hover:bg-slate-100'
+                    ? 'bg-slate-900 text-white dark:bg-slate-100 dark:text-slate-900'
+                    : 'bg-transparent text-slate-500 hover:text-slate-900 hover:bg-slate-100 dark:text-slate-400 dark:hover:text-slate-50 dark:hover:bg-slate-800'
                 }`}
               >
                 {category.label}
@@ -66,7 +66,7 @@ export default function CatalogPage() {
         <div className="flex shrink-0 flex-wrap items-center gap-2 sm:gap-3">
           <button
             type="button"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-slate-300 hover:bg-slate-50 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-slate-300 hover:bg-slate-50 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-800 dark:focus-visible:ring-slate-200"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 4h18M6 12h12M10 20h4" />
@@ -76,25 +76,25 @@ export default function CatalogPage() {
 
           <button
             type="button"
-            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-slate-300 hover:bg-slate-50 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900"
+            className="inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-medium text-slate-700 hover:border-slate-300 hover:bg-slate-50 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-200 dark:hover:border-slate-600 dark:hover:bg-slate-800 dark:focus-visible:ring-slate-200"
           >
             <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="1.8" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="M3 7h12M3 12h8M3 17h16M17 7l4 4m0-4-4 4" />
             </svg>
             Сортировка
-            <svg className="h-3.5 w-3.5 text-slate-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
+            <svg className="h-3.5 w-3.5 text-slate-500 dark:text-slate-400" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="2.5" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
             </svg>
           </button>
 
-          <div className="flex items-center rounded-full border border-slate-200 bg-white p-1">
+          <div className="flex items-center rounded-full border border-slate-200 bg-white p-1 dark:border-slate-700 dark:bg-slate-900">
             <button
               type="button"
               aria-label="Сетка"
               aria-pressed={viewMode === 'grid'}
               onClick={() => setViewMode('grid')}
-              className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 ${
-                viewMode === 'grid' ? 'bg-slate-100 text-slate-900' : 'text-slate-400 hover:text-slate-700'
+              className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-slate-200 ${
+                viewMode === 'grid' ? 'bg-slate-100 text-slate-900 dark:bg-slate-700 dark:text-slate-50' : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'
               }`}
             >
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
@@ -106,8 +106,8 @@ export default function CatalogPage() {
               aria-label="Список"
               aria-pressed={viewMode === 'list'}
               onClick={() => setViewMode('list')}
-              className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 ${
-                viewMode === 'list' ? 'bg-slate-100 text-slate-900' : 'text-slate-400 hover:text-slate-700'
+              className={`flex h-8 w-8 items-center justify-center rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-slate-200 ${
+                viewMode === 'list' ? 'bg-slate-100 text-slate-900 dark:bg-slate-700 dark:text-slate-50' : 'text-slate-400 hover:text-slate-700 dark:hover:text-slate-200'
               }`}
             >
               <svg className="h-4 w-4" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">

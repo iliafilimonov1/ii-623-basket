@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import { Link, NavLink } from 'react-router-dom'
+import ThemeToggle from '../ui/ThemeToggle.jsx'
 import { useFavorites } from '../../context/FavoritesContext.jsx'
+import { useTheme } from '../../context/ThemeContext.jsx'
 import { PATHS } from '../../router/paths.js'
 
 const NAV_ITEMS = [
@@ -29,6 +31,7 @@ export default function Header({
   const [internalSearch, setInternalSearch] = useState('')
   const searchVal = externalSearchValue !== undefined ? externalSearchValue : internalSearch
   const { count: favoritesCount } = useFavorites()
+  const { theme, toggleTheme } = useTheme()
 
   const handleSearchInput = (e) => {
     if (onSearchChange) {
@@ -39,12 +42,12 @@ export default function Header({
   }
 
   return (
-    <header className={`sticky top-0 z-40 w-full bg-white border-b border-slate-200/80 shadow-2xs ${className}`}>
+    <header className={`sticky top-0 z-40 w-full bg-white border-b border-slate-200/80 shadow-2xs dark:bg-slate-900 dark:border-slate-800 ${className}`}>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-18 gap-3 sm:gap-6">
+        <div className="flex items-center justify-between h-18 gap-2 sm:gap-4">
           
           {/* 1. Блок бренда: розовый круглый логотип + название */}
-          <Link to={PATHS.home} className="flex items-center gap-3 shrink-0 cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 rounded-full">
+          <Link to={PATHS.home} aria-label="Lumina Marketplace" className="flex items-center gap-3 shrink-0 cursor-pointer select-none focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:focus-visible:ring-slate-200 rounded-full">
             <div className="w-9 h-9 sm:w-10 sm:h-10 rounded-full bg-rose-600 flex items-center justify-center text-white shadow-xs transition-transform duration-200 hover:scale-105">
               {/* Иконка пакета/сумки Lumina Marketplace */}
               <svg
@@ -62,7 +65,7 @@ export default function Header({
                 <path d="M16 10a4 4 0 0 1-8 0" />
               </svg>
             </div>
-            <span className="text-base sm:text-lg font-bold text-slate-900 tracking-tight whitespace-nowrap">
+            <span className="hidden xl:inline text-base sm:text-lg font-bold text-slate-900 tracking-tight whitespace-nowrap dark:text-slate-50">
               Lumina Marketplace
             </span>
           </Link>
@@ -70,7 +73,7 @@ export default function Header({
           {/* 2. Навигационное меню */}
           <nav
             aria-label="Основная навигация"
-            className="hidden md:flex items-center gap-5 lg:gap-7"
+            className="hidden md:flex items-center gap-3 xl:gap-6"
           >
             {NAV_ITEMS.map((item) => (
               <NavLink
@@ -78,10 +81,10 @@ export default function Header({
                 to={item.path}
                 end={item.end}
                 className={({ isActive }) =>
-                  `text-sm font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 rounded-md py-1 whitespace-nowrap ${
+                  `text-sm font-medium transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 focus-visible:ring-offset-2 dark:focus-visible:ring-slate-200 dark:focus-visible:ring-offset-slate-900 rounded-md py-1 whitespace-nowrap ${
                     isActive
-                      ? 'text-slate-900 font-semibold'
-                      : 'text-slate-500 hover:text-slate-900'
+                      ? 'text-slate-900 font-semibold dark:text-slate-50'
+                      : 'text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-slate-50'
                   }`
                 }
               >
@@ -94,7 +97,7 @@ export default function Header({
           <div className="flex items-center gap-2 sm:gap-3 shrink-0">
             {/* Поисковое поле */}
             <div className="relative flex items-center">
-              <span className="absolute left-3.5 text-slate-400 pointer-events-none flex items-center">
+              <span className="absolute left-3.5 text-slate-400 pointer-events-none flex items-center dark:text-slate-500">
                 <svg
                   className="w-4 h-4"
                   fill="none"
@@ -116,15 +119,17 @@ export default function Header({
                 onChange={handleSearchInput}
                 placeholder="Поиск товаров..."
                 aria-label="Поиск товаров"
-                className="w-32 sm:w-48 md:w-56 lg:w-68 pl-9 pr-4 py-2 text-sm text-slate-900 placeholder:text-slate-400 bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200/90 rounded-full transition-all duration-200 focus:outline-none focus:border-slate-400 focus:ring-2 focus:ring-slate-900/10"
+                className="w-28 sm:w-36 lg:w-48 xl:w-64 pl-9 pr-4 py-2 text-sm text-slate-900 placeholder:text-slate-400 bg-slate-50 hover:bg-slate-100/70 focus:bg-white border border-slate-200/90 rounded-full transition-all duration-200 focus:outline-none focus:border-slate-400 focus:ring-2 focus:ring-slate-900/10 dark:text-slate-100 dark:placeholder:text-slate-500 dark:bg-slate-800 dark:hover:bg-slate-800 dark:focus:bg-slate-950 dark:border-slate-700 dark:focus:border-slate-500 dark:focus:ring-slate-100/10"
               />
             </div>
+
+            <ThemeToggle theme={theme} onToggle={toggleTheme} />
 
             {/* Иконка сердечка «Избранное» */}
             <Link
               to={PATHS.favorites}
               aria-label={favoritesCount > 0 ? `Избранное, ${favoritesCount}` : 'Перейти в избранное'}
-              className="relative p-2 text-slate-700 hover:text-rose-600 hover:bg-slate-100 rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900"
+              className="relative p-2 text-slate-700 hover:text-rose-600 hover:bg-slate-100 rounded-full transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:text-slate-200 dark:hover:bg-slate-800 dark:focus-visible:ring-slate-200"
             >
               <svg
                 className="w-5 h-5"
@@ -150,10 +155,10 @@ export default function Header({
               type="button"
               onClick={onProfileClick}
               aria-label="Меню профиля"
-              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 text-slate-700 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-slate-200 bg-white hover:border-slate-300 hover:bg-slate-50 text-slate-700 transition-colors cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:hover:border-slate-600 dark:hover:bg-slate-800 dark:text-slate-200 dark:focus-visible:ring-slate-200"
             >
               <svg
-                className="w-4.5 h-4.5 text-slate-700"
+                className="w-4.5 h-4.5 text-slate-700 dark:text-slate-200"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
@@ -166,7 +171,7 @@ export default function Header({
                 <circle cx="12" cy="7" r="4" />
               </svg>
               <svg
-                className="w-3.5 h-3.5 text-slate-500"
+                className="w-3.5 h-3.5 text-slate-500 dark:text-slate-400"
                 viewBox="0 0 24 24"
                 fill="none"
                 stroke="currentColor"
