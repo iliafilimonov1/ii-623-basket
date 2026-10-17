@@ -11,8 +11,20 @@
       rel="stylesheet"
     />
     <title>Корзина товаров — Маркетплейс</title>
+    <script>
+      (function () {
+        try {
+          var theme = localStorage.getItem('lumina-theme')
+          var prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
+          if (theme === 'dark' || (!theme && prefersDark)) {
+            document.documentElement.classList.add('dark')
+            document.documentElement.style.colorScheme = 'dark'
+          }
+        } catch (e) {}
+      })()
+    </script>
   </head>
-  <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen">
+  <body class="bg-slate-50 text-slate-900 font-sans antialiased min-h-screen dark:bg-slate-950 dark:text-slate-50">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

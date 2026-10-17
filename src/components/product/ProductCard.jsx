@@ -59,7 +59,7 @@ export default function ProductCard({
       className={`group flex min-w-0 w-full flex-col cursor-pointer select-none ${className}`}
     >
       {/* Медиа-блок */}
-      <div className="relative aspect-square w-full min-w-0 overflow-hidden rounded-2xl bg-slate-100">
+      <div className="relative aspect-square w-full min-w-0 overflow-hidden rounded-2xl bg-slate-100 dark:bg-slate-800">
         <img
           src={image}
           alt={imageAlt || title}
@@ -70,7 +70,7 @@ export default function ProductCard({
         {/* Бейдж «Выбор гостей» */}
         {badgeText && (
           <div className="absolute top-3 left-3 z-10">
-            <span className="inline-flex items-center rounded-full bg-white/95 px-3 py-1.5 text-xs sm:text-[13px] font-semibold text-slate-900 shadow-sm backdrop-blur-md border border-white/60">
+            <span className="inline-flex items-center rounded-full bg-white/95 px-3 py-1.5 text-xs sm:text-[13px] font-semibold text-slate-900 shadow-sm backdrop-blur-md border border-white/60 dark:bg-slate-950/85 dark:text-slate-50 dark:border-slate-700/80">
               {badgeText}
             </span>
           </div>
@@ -105,14 +105,14 @@ export default function ProductCard({
       <div className="pt-3 flex flex-col">
         {/* Строка 1: Название и рейтинг */}
         <div className="flex items-center justify-between gap-2">
-          <h3 className="truncate text-[15px] sm:text-base font-bold text-slate-900 tracking-tight">
+          <h3 className="truncate text-[15px] sm:text-base font-bold text-slate-900 tracking-tight dark:text-slate-50">
             {title}
           </h3>
 
           {rating !== undefined && rating !== null && (
-            <div className="flex items-center gap-1 shrink-0 text-sm sm:text-[15px] font-semibold text-slate-900">
+            <div className="flex items-center gap-1 shrink-0 text-sm sm:text-[15px] font-semibold text-slate-900 dark:text-slate-50">
               <svg
-                className="h-3.5 w-3.5 fill-none stroke-slate-900 stroke-2"
+                className="h-3.5 w-3.5 fill-none stroke-slate-900 stroke-2 dark:stroke-slate-100"
                 viewBox="0 0 24 24"
                 aria-hidden="true"
               >
@@ -125,7 +125,7 @@ export default function ProductCard({
 
         {/* Строка 2: Вторичное описание / даты */}
         {subtitle && (
-          <p className="mt-0.5 text-sm text-slate-500 font-normal">
+          <p className="mt-0.5 text-sm text-slate-500 font-normal dark:text-slate-400">
             {subtitle}
           </p>
         )}
@@ -133,7 +133,7 @@ export default function ProductCard({
         {/* Строка 3: Стоимость */}
         {price !== undefined && price !== null && (
           <div className="mt-1 flex items-end justify-between gap-3">
-            <p className="text-[15px] sm:text-base font-bold text-slate-900 tracking-tight">
+            <p className="text-[15px] sm:text-base font-bold text-slate-900 tracking-tight dark:text-slate-50">
               {pricePrefix}
               {formattedPrice} {currency}
             </p>

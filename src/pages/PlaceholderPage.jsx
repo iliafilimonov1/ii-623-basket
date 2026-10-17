@@ -8,10 +8,10 @@ export default function PlaceholderPage({ title, description }) {
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-      <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight">
+      <h1 className="text-2xl sm:text-3xl font-bold text-slate-900 tracking-tight dark:text-slate-50">
         {title}
       </h1>
-      <p className="mt-3 text-slate-500">
+      <p className="mt-3 text-slate-500 dark:text-slate-400">
         {description || `Раздел «${location.pathname}» будет добавлен позже.`}
       </p>
     </main>
